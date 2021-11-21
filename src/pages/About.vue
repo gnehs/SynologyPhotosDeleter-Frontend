@@ -1,19 +1,21 @@
 <template>
-  <div>
-    <div class="page-title">About</div>
-    <div class="about-box-items">
-      <div class="about-box-item">
-        <div class="about-box-item-icon"><i class="bx bx-info-circle"></i></div>
-        <div class="about-box-item-title">{{ version }}</div>
-        <div class="about-box-item-subtitle">Version</div>
-      </div>
-      <div class="about-box-item">
-        <div class="about-box-item-icon"><i class="bx bxl-github"></i></div>
-        <a class="about-box-item-title" href="https://github.com/gnehs/SynologyPhotosDeleter" target="_blank">
-          gnehs/SynologyPhotosDeleter
-        </a>
-        <div class="about-box-item-subtitle" href="https://github.com/gnehs/SynologyPhotosDeleter" target="_blank">GitHub</div>
-      </div>
+  <div class="page-title">About</div>
+  <p>Delete screenshots uploaded from your iPhone by analyzing the photo Exif</p>
+  <div class="about-box-items">
+    <div class="about-box-item">
+      <div class="about-box-item-icon"><i class="bx bx-info-circle"></i></div>
+      <div class="about-box-item-title">{{ version }}</div>
+      <div class="about-box-item-subtitle">Version</div>
+    </div>
+    <div class="about-box-item">
+      <div class="about-box-item-icon"><i class="bx bxl-github"></i></div>
+      <a class="about-box-item-title" href="https://github.com/gnehs/SynologyPhotosDeleter" target="_blank"> SynologyPhotosDeleter </a>
+      <div class="about-box-item-subtitle">GitHub</div>
+    </div>
+    <div class="about-box-item">
+      <div class="about-box-item-icon"><i class="bx bx-user"></i></div>
+      <a class="about-box-item-title" href="https://github.com/gnehs" target="_blank"> gnehs </a>
+      <div class="about-box-item-subtitle">Author</div>
     </div>
   </div>
 </template>
@@ -42,6 +44,7 @@ export default {
     gap: 16px
     @media screen and (max-width: 768px)
         grid-template-columns: 1fr
+        font-size: 12px
     .about-box-item
         background-color: #f2f2f2
         padding: 16px

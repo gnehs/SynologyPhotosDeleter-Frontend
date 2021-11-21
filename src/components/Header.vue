@@ -34,14 +34,20 @@ export default {
     align-items: center
     justify-content: space-between
     padding: 16px
+    @media screen and (max-width: 768px)
+        padding: 8px
     .title
         display: flex
         .logo
             font-weight: bold
             font-size: 1.5em
+            @media screen and (max-width: 768px)
+                font-size: 1.1em
         .version
             margin-left: 0.5em
             opacity: 0.5
+            @media screen and (max-width: 768px)
+                display: none
     .header-items
         display: flex
         gap: 8px
@@ -49,11 +55,12 @@ export default {
             text-decoration: none
             color: #000
             opacity: .5
-            min-width: 70px
+            min-width: 4em
             text-align: center
             padding: 8px
             border-radius: 4px
-            transition: all .2s ease-in-out
+            @media screen and (max-width: 768px)
+                font-size: 12px
             &:hover
                 background-color: #eee
             &.router-link-exact-active
