@@ -1,5 +1,5 @@
 <template>
-  <div v-if="items.length">
+  <div v-if="items && items.length">
     <div class="header">
       <div class="page-title">{{ items.length }} photos</div>
       <div class="actions">
@@ -17,7 +17,7 @@
       <a class="btn" @click="deleteSeleted">Delete</a>
     </div>
   </div>
-  <div v-else>
+  <div v-else-if="items">
     <div class="header">
       <div class="page-title">No photos</div>
     </div>
@@ -26,6 +26,11 @@
       such as screenshots
     </p>
   </div>
+  <div v-else>
+    <div class="header">
+      <div class="page-title">Loading...</div>
+    </div>
+  </div>
 </template>
 
 
@@ -33,7 +38,7 @@
 export default {
   data() {
     return {
-      items: []
+      items: null
     }
   },
   computed: {
@@ -60,6 +65,7 @@ export default {
     },
     async deleteSeleted() {
       const urls = this.selectedItems.map((item) => item.url)
+      this.items = null
       await fetch('/api/delete', {
         method: 'POST',
         headers: {
