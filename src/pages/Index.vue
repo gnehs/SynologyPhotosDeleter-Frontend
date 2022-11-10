@@ -8,13 +8,13 @@
       </div>
     </div>
     <div class="items">
-      <div v-for="item of items" :key="item.url" class="item" :class="{ seleted: item.seleted }" @click="item.seleted = !item.seleted">
+      <div v-for="item of items" :key="item.url" class="item" :class="{ selected: item.selected }" @click="item.selected = !item.selected">
         <img :src="`/api/${item.url}`" />
       </div>
     </div>
     <div class="toolbar" :class="{ show: selectedItems.length > 0 }">
       <div class="text">{{ selectedItems.length }} photos selected</div>
-      <a class="btn" @click="deleteSeleted">Delete</a>
+      <a class="btn" @click="deleteselected">Delete</a>
     </div>
   </div>
   <div v-else-if="items">
@@ -43,7 +43,7 @@ export default {
   },
   computed: {
     selectedItems() {
-      return this.items.filter((item) => item.seleted)
+      return this.items.filter((item) => item.selected)
     }
   },
   mounted() {
@@ -54,16 +54,16 @@ export default {
       fetch('/api/list')
         .then((res) => res.json())
         .then((data) => {
-          this.items = data.map((item) => ({ url: item, seleted: false }))
+          this.items = data.map(({ file, selected }) => ({ url: file, selected }))
         })
     },
     selectAll() {
-      this.items.forEach((item) => (item.seleted = true))
+      this.items.forEach((item) => (item.selected = true))
     },
     unselectAll() {
-      this.items.forEach((item) => (item.seleted = false))
+      this.items.forEach((item) => (item.selected = false))
     },
-    async deleteSeleted() {
+    async deleteselected() {
       const urls = this.selectedItems.map((item) => item.url)
       this.items = null
       await fetch('/api/delete', {
@@ -106,7 +106,7 @@ export default {
     transition: all .2s ease
     cursor: pointer
     background-color: #eee
-    &.seleted
+    &.selected
       box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0070f3
       transform: scale(.95)
       background-color: #0070f3
