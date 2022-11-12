@@ -27,8 +27,11 @@
     </p>
   </div>
   <div v-else>
-    <div class="header">
-      <div class="page-title">Loading...</div>
+    <div class="loader-container">
+      <div class="loader"> </div>
+      <div class="loader-text">
+        Scanning photos...<br /> This may take a while
+      </div>
     </div>
   </div>
 </template>
@@ -95,6 +98,23 @@ export default {
         background-color: #ddd
       &:active
         background-color: #ccc
+.loader-container
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  margin-top: min(512px,25vh)
+  .loader
+    border: 4px solid #f3f3f3
+    border-radius: 50%
+    border-top: 4px solid #0070f3
+    width: 64px
+    height: 64px
+    animation: spin 2s linear infinite
+  .loader-text
+    margin-top: 16px
+    text-align: center
+    opacity: .5
 .items
   display: grid
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))
@@ -150,4 +170,9 @@ export default {
       background-color: #0060e9
     &:active
       background-color: #0050d7
+@keyframes spin
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
 </style>
